@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michal's Tire Shop - Professional Tire Services in Fair Lawn, NJ</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon">🛞</span>
+                <span class="logo-text">Michal's Tire Shop</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#testimonials" class="nav-link">Reviews</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <button class="book-now-btn" onclick="scrollToSection('contact')">Book Now</button>
+            </div>
+            <div class="hamburger" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Expert Tire Care You Can Trust</h1>
+                <p class="hero-subtitle">Family-owned tire shop serving Fair Lawn and surrounding areas with professional tire sales, mounting, balancing, and repairs since day one.</p>
+                <div class="hero-buttons">
+                    <button class="cta-primary" onclick="scrollToSection('contact')">Schedule Service</button>
+                    <button class="cta-secondary" onclick="scrollToSection('services')">View Services</button>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5000+</span>
+                    <span class="stat-label">Tires Serviced</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Family Owned</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Complete Tire Services</h2>
+                <p>Professional tire care with transparent pricing and expert craftsmanship</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🛞</div>
+                    <h3>Tire Sales</h3>
+                    <p>Premium tire brands at competitive prices. We'll help you find the perfect tires for your vehicle and driving needs.</p>
+                    <div class="service-price">Starting at $89</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚙️</div>
+                    <h3>Mounting & Balancing</h3>
+                    <p>Professional tire mounting and precision wheel balancing for a smooth, safe ride every time.</p>
+                    <div class="service-price">$25 per tire</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Flat Tire Repair</h3>
+                    <p>Quick and reliable flat tire repairs using industry-standard techniques and quality materials.</p>
+                    <div class="service-price">$20 per repair</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📋</div>
+                    <h3>Tire Inspection</h3>
+                    <p>Comprehensive tire health checks including tread depth, pressure, and alignment assessment.</p>
+                    <div class="service-price">Free with service</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="features-content">
+                <div class="features-text">
+                    <h2>Why Choose Michal's?</h2>
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <span class="feature-icon">✅</span>
+                            <div>
+                                <h4>Family-Owned Trust</h4>
+                                <p>Personal service and honest pricing from people who care about your safety</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">⚡</span>
+                            <div>
+                                <h4>Fast Service</h4>
+                                <p>Most services completed while you wait, getting you back on the road quickly</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">💰</span>
+                            <div>
+                                <h4>Competitive Pricing</h4>
+                                <p>Fair, transparent pricing that beats the big chains without compromising quality</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🏆</span>
+                            <div>
+                                <h4>Expert Technicians</h4>
+                                <p>Certified professionals with years of experience in tire service and repair</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="features-visual">
+                    <div class="visual-element"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Customers Say</h2>
+                <p>Real reviews from satisfied customers in Fair Lawn and beyond</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                    <p>"Michal and his team are absolutely fantastic. They fixed my flat tire in 20 minutes and the price was very reasonable. Will definitely be coming back for all my tire needs!"</p>
+                    <div class="testimonial-author">
+                        <strong>Sarah M.</strong>
+                        <span>Fair Lawn Resident</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                    <p>"Great family business! They helped me find the right tires for my budget and installed them perfectly. The personal service you get here is unmatched by the big chains."</p>
+                    <div class="testimonial-author">
+                        <strong>Mike R.</strong>
+                        <span>Paterson Local</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                    <p>"Honest, fast, and professional. They could have sold me four new tires but instead repaired my damaged one for a fraction of the cost. This is how business should be done."</p>
+                    <div class="testimonial-author">
+                        <strong>Jennifer L.</strong>
+                        <span>Glen Rock Customer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Ready to Get Started?</h2>
+                    <p>Schedule your tire service today or stop by for a free inspection</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            <div>
+                                <strong>Visit Us</strong>
+                                <p>123 Main Street<br>Fair Lawn, NJ 07410</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            <div>
+                                <strong>Call Us</strong>
+                                <p>(201) 555-TIRE<br>Mon-Fri: 8AM-6PM<br>Sat: 8AM-4PM</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">⏰</span>
+                            <div>
+                                <strong>Quick Service</strong>
+                                <p>Most repairs completed<br>in under 30 minutes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form class="appointment-form">
+                        <h3>Book Your Appointment</h3>
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Phone Number" required>
+                        </div>
+                        <div class="form-group">
+                            <select required>
+                                <option value="">Select Service</option>
+                                <option value="tire-sales">Tire Sales</option>
+                                <option value="mounting-balancing">Mounting & Balancing</option>
+                                <option value="flat-repair">Flat Tire Repair</option>
+                                <option value="inspection">Tire Inspection</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="date" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Additional notes (vehicle make/model, tire size, etc.)"></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Schedule Appointment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="logo-icon">🛞</span>
+                        <span class="logo-text">Michal's Tire Shop</span>
+                    </div>
+                    <p>Your trusted local tire experts in Fair Lawn, NJ</p>
+                </div>
+                <div class="footer-info">
+                    <div class="footer-section">
+                        <h4>Services</h4>
+                        <ul>
+                            <li>Tire Sales</li>
+                            <li>Mounting & Balancing</li>
+                            <li>Flat Repairs</li>
+                            <li>Inspections</li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Contact</h4>
+                        <ul>
+                            <li>123 Main Street</li>
+                            <li>Fair Lawn, NJ 07410</li>
+                            <li>(201) 555-TIRE</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Michal's Tire Shop. All rights reserved.</p>
+                <p class="demo-credit">Demo by <a href="https://schtubbs.dev" target="_blank">Schtubbs LLC</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>
