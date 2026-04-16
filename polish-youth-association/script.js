@@ -1,3 +1,18 @@
+// Smooth scroll for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            const offsetTop = target.offsetTop - 70;
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
 // Intersection Observer for fade-in animations
 const observerOptions = {
     threshold: 0.1,
@@ -12,180 +27,138 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe all fade-in elements
-document.querySelectorAll('.fade-in').forEach(el => {
+// Add fade-in class to elements and observe them
+const elementsToAnimate = document.querySelectorAll('.section-title, .service-card, .testimonial-card, .gallery-image, .about-text, .about-image');
+elementsToAnimate.forEach(el => {
+    el.classList.add('fade-in');
     observer.observe(el);
 });
 
-// Navbar scroll effect
-const navbar = document.querySelector('.navbar');
-let lastScroll = 0;
+// Stagger animation for service cards
+const serviceCards = document.querySelectorAll('.service-card');
+serviceCards.forEach((card, index) => {
+    setTimeout(() => {
+        card.style.animationDelay = `${index * 0.1}s`;
+    }, 100);
+});
 
+// Navbar background on scroll
 window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 100) {
-        navbar.classList.add('scrolled');
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 100) {
+        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
     } else {
-        navbar.classList.remove('scrolled');
+        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+        navbar.style.boxShadow = 'none';
     }
-    
-    lastScroll = currentScroll;
-});
-
-// Parallax effect for hero background
-const heroBg = document.querySelector('.hero-bg');
-
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const rate = scrolled * -0.5;
-    
-    if (heroBg) {
-        heroBg.style.transform = `translate3d(0, ${rate}px, 0)`;
-    }
-});
-
-// Smooth scroll for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const offsetTop = target.offsetTop - 80;
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
-        }
-    });
 });
 
 // Scroll to top button
-const scrollToTopBtn = document.getElementById('scroll-to-top');
+const scrollToTopButton = document.getElementById('scrollToTop');
 
 window.addEventListener('scroll', () => {
     if (window.pageYOffset > 300) {
-        scrollToTopBtn.classList.add('visible');
+        scrollToTopButton.classList.add('visible');
     } else {
-        scrollToTopBtn.classList.remove('visible');
+        scrollToTopButton.classList.remove('visible');
     }
 });
 
-scrollToTopBtn.addEventListener('click', () => {
+scrollToTopButton.addEventListener('click', () => {
     window.scrollTo({
         top: 0,
         behavior: 'smooth'
     });
 });
 
-// Form submission handler
+// Form submission
 const contactForm = document.querySelector('.contact-form');
-contactForm.addEventListener('submit', function(e) {
+contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    
-    // Get form data
-    const formData = new FormData(this);
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const message = formData.get('message');
-    
-    // Simple validation
-    if (!name || !email || !message) {
-        alert('Please fill in all fields.');
-        return;
-    }
+    const submitButton = contactForm.querySelector('.submit-button');
+    const originalText = submitButton.textContent;
     
     // Simulate form submission
-    const submitBtn = this.querySelector('.submit-btn');
-    const originalText = submitBtn.textContent;
-    
-    submitBtn.textContent = 'Sending...';
-    submitBtn.disabled = true;
+    submitButton.textContent = 'Sending...';
+    submitButton.disabled = true;
     
     setTimeout(() => {
-        alert('Thank you for your message! We\'ll get back to you soon.');
-        this.reset();
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-    }, 2000);
+        submitButton.textContent = 'Thank you!';
+        setTimeout(() => {
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+            contactForm.reset();
+        }, 2000);
+    }, 1500);
+});
+
+// Parallax effect for hero section
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const hero = document.querySelector('.hero');
+    const rate = scrolled * -0.5;
+    
+    if (hero) {
+        hero.style.transform = `translateY(${rate}px)`;
+    }
+});
+
+// Gallery image hover effect enhancement
+const galleryImages = document.querySelectorAll('.gallery-image');
+galleryImages.forEach(image => {
+    image.addEventListener('mouseenter', () => {
+        image.style.transform = 'scale(1.05) rotate(1deg)';
+    });
+    
+    image.addEventListener('mouseleave', () => {
+        image.style.transform = 'scale(1) rotate(0deg)';
+    });
 });
 
 // Add loading animation to images
-document.querySelectorAll('img').forEach(img => {
-    img.addEventListener('load', function() {
-        this.style.opacity = '1';
+const images = document.querySelectorAll('img');
+images.forEach(img => {
+    img.addEventListener('load', () => {
+        img.style.opacity = '1';
     });
     
-    // Set initial opacity for fade-in effect
     img.style.opacity = '0';
-    img.style.transition = 'opacity 0.3s ease';
+    img.style.transition = 'opacity 0.5s ease-in-out';
+    
+    if (img.complete) {
+        img.style.opacity = '1';
+    }
 });
 
-// Enhanced hover effects for cards
-document.querySelectorAll('.program-card, .testimonial-card').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-8px) scale(1.02)';
+// Service card hover effects
+const cards = document.querySelectorAll('.service-card, .testimonial-card');
+cards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-8px) scale(1.02)';
     });
     
-    card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0) scale(1)';
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0) scale(1)';
     });
 });
 
-// Gallery lightbox effect (simple version)
-document.querySelectorAll('.gallery-item img').forEach(img => {
-    img.addEventListener('click', function() {
-        const lightbox = document.createElement('div');
-        lightbox.style.cssText = `
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-            cursor: pointer;
-        `;
-        
-        const enlargedImg = document.createElement('img');
-        enlargedImg.src = this.src;
-        enlargedImg.style.cssText = `
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-            border-radius: 8px;
-        `;
-        
-        lightbox.appendChild(enlargedImg);
-        document.body.appendChild(lightbox);
-        
-        lightbox.addEventListener('click', () => {
-            document.body.removeChild(lightbox);
-        });
+// Initialize animations on page load
+document.addEventListener('DOMContentLoaded', () => {
+    // Add initial loading animation to hero content
+    const heroContent = document.querySelector('.hero-content');
+    if (heroContent) {
+        heroContent.style.animation = 'fadeInUp 1s ease-out';
+    }
+    
+    // Preload critical images
+    const criticalImages = [
+        'https://source.unsplash.com/1600x900/?polish,youth,community,flag',
+        'https://source.unsplash.com/600x500/?polish,community,youth'
+    ];
+    
+    criticalImages.forEach(src => {
+        const img = new Image();
+        img.src = src;
     });
 });
-
-// Performance optimization: Debounce scroll events
-function debounce(func, wait, immediate) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            timeout = null;
-            if (!immediate) func(...args);
-        };
-        const callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow) func(...args);
-    };
-}
-
-// Apply debounce to scroll-heavy functions
-const debouncedScrollHandler = debounce(() => {
-    // Any heavy scroll operations can go here
-}, 16); // ~60fps
-
-window.addEventListener('scroll', debouncedScrollHandler, { passive: true });
